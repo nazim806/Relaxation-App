@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.relaxationApp {
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+.time-choice,
+.sound-select {
+    height: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+}
+
+.time-choice button,
+.sound-select button {
+    color: white;
+    width: 30%;
+    height: 10%;
+    background: none;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid white;
+    transition: all 0.5s ease;
+}
+
+.sound-select button {
+    border: none;
+    height: 120px;
+    width: 120px;
+    padding: 30px;
+    border-radius: 50%;
+}
+
+.sound-select button:nth-child(1) {
+    background: #4972a1;
+}
+
+.sound-select button:nth-child(2) {
+    background: #a14f49;
+}
+
+.sound-select button img {
+    height: 100%;
+}
+
+.time-choice button:hover {
+    background: white;
+    color: black;
+}
+
+.music-container {
+    position: relative;
+    height: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+}
+
+.music-container svg {
+    position: absolute;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    pointer-events: none;
+}
+
+.music-container svg circle {
+    transition: all 0.2s ease-in-out;
+}
+
+.time-display {
+    color: white;
+    position: absolute;
+    font-size: 50px;
+    bottom: 10%;
+}
+
+video {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    z-index: -10;
+}
