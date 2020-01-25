@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-.relaxationApp {
+.app {
     height: 100vh;
     display: flex;
     justify-content: space-evenly;
@@ -12,8 +12,8 @@
     font-family: "Montserrat", sans-serif;
 }
 
-.time-choice,
-.sound-select {
+.time-select,
+.sound-picker {
     height: 80%;
     display: flex;
     justify-content: space-evenly;
@@ -22,8 +22,8 @@
     flex: 1;
 }
 
-.time-choice button,
-.sound-select button {
+.time-select button,
+.sound-picker button {
     color: white;
     width: 30%;
     height: 10%;
@@ -35,7 +35,7 @@
     transition: all 0.5s ease;
 }
 
-.sound-select button {
+.sound-picker button {
     border: none;
     height: 120px;
     width: 120px;
@@ -43,24 +43,24 @@
     border-radius: 50%;
 }
 
-.sound-select button:nth-child(1) {
+.sound-picker button:nth-child(1) {
     background: #4972a1;
 }
 
-.sound-select button:nth-child(2) {
+.sound-picker button:nth-child(2) {
     background: #a14f49;
 }
 
-.sound-select button img {
+.sound-picker button img {
     height: 100%;
 }
 
-.time-choice button:hover {
+.time-select button:hover {
     background: white;
     color: black;
 }
 
-.music-container {
+.player-container {
     position: relative;
     height: 80%;
     display: flex;
@@ -70,24 +70,24 @@
     flex: 1;
 }
 
-.music-container svg {
+.player-container svg {
     position: absolute;
-    height: 50%;
-    top: 50%;
+    height: 45%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-90deg);
     pointer-events: none;
 }
 
-.music-container svg circle {
+.player-container svg circle {
     transition: all 0.2s ease-in-out;
 }
 
 .time-display {
     color: white;
     position: absolute;
-    font-size: 50px;
-    bottom: 10%;
+    font-size: 32px;
+    bottom: 5%;
 }
 
 video {

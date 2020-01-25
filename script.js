@@ -1,16 +1,15 @@
-
-const music = document.querySelector(".music");
+const song = document.querySelector(".song");
 const play = document.querySelector(".play");
 const replay = document.querySelector(".replay");
 const outline = document.querySelector(".moving-outline circle");
-const video = document.querySelector(".video-container video");
+const video = document.querySelector(".vid-container video");
 //Sounds
-const sounds = document.querySelectorAll(".sound-select button");
+const sounds = document.querySelectorAll(".sound-picker button");
 //Time Display
 const timeDisplay = document.querySelector(".time-display");
 const outlineLength = outline.getTotalLength();
 //Duration
-const timeSelect = document.querySelectorAll(".time-choice button");
+const timeSelect = document.querySelectorAll(".time-select button");
 let fakeDuration = 600;
 
 outline.style.strokeDashoffset = outlineLength;
@@ -21,52 +20,49 @@ timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(
 
 sounds.forEach(sound => {
   sound.addEventListener("click", function() {
-    music.src = this.getAttribute("sound-data");
-    video.src = this.getAttribute("video-data");
-    checkPlaying(music);
+    song.src = this.getAttribute("data-sound");
+    video.src = this.getAttribute("data-video");
+    checkPlaying(song);
   });
 });
 
 play.addEventListener("click", function() {
-  checkPlaying(music);
+  checkPlaying(song);
 });
 
 replay.addEventListener("click", function() {
-    restartSong(music);
-    
-  });
+  restartSong(song);
+});
 
-
-const restartSong = music =>{
-    let currentTime = music.currentTime;
-    music.currentTime = 0;
-    
-
-}
+const restartSong = song => {
+  let currentTime = song.currentTime;
+  song.currentTime = 0;
+  console.log("ciao");
+};
 
 timeSelect.forEach(option => {
   option.addEventListener("click", function() {
-    fakeDuration = this.getAttribute("time-length");
+    fakeDuration = this.getAttribute("data-time");
     timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(
       fakeDuration % 60
     )}`;
   });
 });
 
-const checkPlaying = music => {
-  if (music.paused) {
-    music.play();
+const checkPlaying = song => {
+  if (song.paused) {
+    song.play();
     video.play();
     play.src = "./svg/pause.svg";
   } else {
-    music.pause();
+    song.pause();
     video.pause();
     play.src = "./svg/play.svg";
   }
 };
 
-music.ontimeupdate = function() {
-  let currentTime = music.currentTime;
+song.ontimeupdate = function() {
+  let currentTime = song.currentTime;
   let elapsed = fakeDuration - currentTime;
   let seconds = Math.floor(elapsed % 60);
   let minutes = Math.floor(elapsed / 60);
@@ -75,8 +71,8 @@ music.ontimeupdate = function() {
   outline.style.strokeDashoffset = progress;
 
   if (currentTime >= fakeDuration) {
-    music.pause();
-    music.currentTime = 0;
+    song.pause();
+    song.currentTime = 0;
     play.src = "./svg/play.svg";
     video.pause();
   }
